@@ -6,6 +6,14 @@ import logging
 
 class HomePage(BasePage):
     def click_on_search_and_input(self, text):
+        """
+        Perform a search action by clicking the search button and entering the provided text.
+        This method scrolls to the search button, clicks it, scrolls to the search input field,
+        and inputs the text followed by pressing the ENTER key to submit the search.
+
+        :param text: Text to be entered into the search input field.
+        :return: None
+        """
         logging.debug(f"Click on the search button and input text {text}")
         self.scroll_to_element(home_page.browse_btn)
         self.click(home_page.browse_btn)

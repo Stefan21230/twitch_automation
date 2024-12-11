@@ -7,6 +7,15 @@ from locators import streamer_page_locators as streamer_page
 
 class SearchPage(BasePage):
     def choose_streamer_and_take_screenshot(self, screenshots_dir):
+        """
+        Select a streamer from the search results and take a screenshot of their page.
+        This method navigates through the search results menu, selects the "Channels" section,
+        finds the desired streamer, navigates to their page, and saves a screenshot of the
+        current view to the specified directory.
+
+        :param screenshots_dir: Directory path where the screenshot will be saved.
+        :return: None
+        """
         logging.debug(f"Choose streamer and take a screenshot what will be saved in {screenshots_dir}")
         menu_list = self.wait_for_element_to_be_visible(search_page.menu_list)
         channels = self.get_child_element(menu_list, search_page.channels_btn)

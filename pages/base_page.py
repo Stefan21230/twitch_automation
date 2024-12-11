@@ -11,19 +11,37 @@ class BasePage:
         self.driver = driver
 
     def action_click(self, locator):
+        """
+        Perform a click action on an element using ActionChains.
+        This method ensures the element is present in the DOM and moves the pointer to it before clicking.
+
+        :param locator: Locator strategy to find the target element.
+        :return: None
+        """
         element = self.wait_for_element_to_be_presence(locator)
         ActionChains(self.driver).move_to_element(element).click(element).perform()
 
     def click(self, locator, timeout=10):
+        """
+        Click on an element once it becomes clickable.
+        Wait for the element to be clickable before performing the action.
+
+        :param locator: Locator strategy to find the target element.
+        :param timeout: (optional) Maximum time to wait for the element to be clickable. Default is 10 seconds.
+        :return: None
+        """
         self.wait_for_element_to_be_clickable(locator, timeout).click()
 
-    def click_javascript(self, locator):
-        self.driver.execute_script("arguments[0].click", locator)
-
-    def close_pop_up_window(self, locator, timeout=10):
-        self.wait_for_element_to_be_presence(locator, timeout).send_keys(Keys.ESCAPE)
-
     def input(self, text: str, locator, timeout=10):
+        """
+        Input text into a specified element.
+        Ensures the element is present before sending the input.
+
+        :param text: Text to be entered into the element.
+        :param locator: Locator strategy to find the target element.
+        :param timeout: (optional) Maximum time to wait for the element to be present. Default is 10 seconds.
+        :return: None
+        """
         self.wait_for_element_to_be_presence(locator, timeout).send_keys(text)
 
     def input_in_iframe_element(self, iframe_locator, locator, text):
