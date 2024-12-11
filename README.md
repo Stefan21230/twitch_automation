@@ -27,4 +27,4 @@ pip install -r requirements.txt\
 pytest test_poems.py
 
 ## A GIF of the test execution.
-![image](https://github.com/user-attachments/assets/fb82f17f-3b09-479b-a561-448bf3ae3ab9)
+![Test Execution](gif/twitch-animation-test.gif)
